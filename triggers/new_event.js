@@ -1,0 +1,70 @@
+const perform = (z, bundle) => {
+  const options = {
+    url: `${process.env.BASE_URL}/${bundle.authData.environment}/events`,
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${bundle.authData.access_token}`,
+    },
+    params: {
+      page: bundle.meta.page + 1,
+      eventType: bundle.inputData.eventType,
+    },
+  };
+
+  return z.request(options).then((response) => {
+    response.throwForStatus();
+    const results = response.json;
+
+    return results.data;
+  });
+};
+
+module.exports = {
+  operation: {
+    perform: perform,
+    canPaginate: true,
+    inputFields: [
+      {
+        key: 'eventType',
+        type: 'string',
+        label: 'Event Type',
+        helpText:
+          '(Optional) Filter by Event Type. See docs for all available event types. If left empty all events will be returned.',
+        choices: [
+          'bank-results',
+          'scheduled-process',
+          'transfer',
+          'realtime-payment',
+          'payment-created',
+          'subscription-complete',
+          'payer-created',
+          'payer-updated',
+        ],
+        required: false,
+        list: false,
+        altersDynamicFields: false,
+      },
+    ],
+    sample: {
+      id: 'evt_XXXXXXXXXXXXXX',
+      type: 'realtime-payment',
+      eventDate: '2021-04-26T07:15:53.0251702',
+      metadata: { status: 'approved', amount: 1000 },
+    },
+    outputFields: [
+      { key: 'id' },
+      { key: 'type' },
+      { key: 'eventDate' },
+      { key: 'metadata' },
+    ],
+  },
+  key: 'new_event',
+  noun: 'Event',
+  display: {
+    label: 'New Event',
+    description: 'Triggers when a new Event is added.',
+    hidden: false,
+    important: true,
+  },
+};
