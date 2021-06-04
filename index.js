@@ -6,11 +6,17 @@ const sourceCreateCreate = require('./creates/source_create.js');
 const paymentCreateRealtimeCreate = require('./creates/payment_create_realtime.js');
 const payerFindSearch = require('./searches/payer_find.js');
 const eventFindSearch = require('./searches/event_find.js');
+const {includeBearerToken, includeJsonContentTypes} = require('./before-handlers');
 
 module.exports = {
   version: require('./package.json').version,
   platformVersion: require('zapier-platform-core').version,
   authentication: authentication,
+  
+  beforeRequest: [
+    includeJsonContentTypes,
+    includeBearerToken
+  ],
   creates: {
     [payerCreateCreate.key]: payerCreateCreate,
     [paymentCreateScheduledCreate.key]: paymentCreateScheduledCreate,

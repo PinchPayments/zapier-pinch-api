@@ -1,14 +1,13 @@
+
+const { BASE_URL } = require('../constants');
+
 module.exports = {
   operation: {
     perform: {
-      url: '{{process.env.BASE_URL}}/{{bundle.authData.environment}}/payments',
+      url: `${BASE_URL}/{{bundle.authData.environment}}/payments`,
       method: 'POST',
       params: {},
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: 'Bearer {{bundle.authData.access_token}}',
-      },
+      headers: {},
       body: {
         id: '{{bundle.inputData.id}}',
         payerId: '{{bundle.inputData.payerId}}',
