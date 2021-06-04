@@ -25,10 +25,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    # - run: npm run zapier:test
+    
     - name: Install Zapier CLI
       run: npm install -g zapier-platform-cli
     - name: Deploy App
       env:
         ZAPIER_DEPLOY_KEY: test123
-    - run: zapier push
+      run: zapier push
