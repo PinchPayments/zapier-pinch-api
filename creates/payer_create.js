@@ -1,12 +1,11 @@
-const perform = (z, bundle) => {
+
+const { BASE_URL } = require('../constants');
+
+const createPayer = (z, bundle) => {
   const options = {
-    url: `${process.env.BASE_URL}/${bundle.authData.environment}/payers`,
+    url: `${BASE_URL}/${bundle.authData.environment}/payers`,
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: `Bearer ${bundle.authData.access_token}`,
-    },
+    headers: {},
     params: {},
     body: {
       firstName: bundle.inputData.firstName,
@@ -37,7 +36,7 @@ const perform = (z, bundle) => {
 
 module.exports = {
   operation: {
-    perform: perform,
+    perform: createPayer,
     inputFields: [
       {
         key: 'id',
@@ -167,19 +166,19 @@ module.exports = {
       agreements: [],
     },
     outputFields: [
-      { key: 'id' },
-      { key: 'firstName' },
-      { key: 'lastName' },
-      { key: 'emailAddress' },
-      { key: 'mobileNumber' },
-      { key: 'streetAddress' },
-      { key: 'suburb' },
-      { key: 'postcode' },
-      { key: 'state' },
-      { key: 'country' },
-      { key: 'companyName' },
-      { key: 'companyRegistrationNumber' },
-      { key: 'metadata' },
+      { key: 'id', label: 'Id' },
+      { key: 'firstName', label: 'First Name' },
+      { key: 'lastName', label: 'Last Name' },
+      { key: 'emailAddress', label: 'Email Address' },
+      { key: 'mobileNumber', label: 'Mobile Number' },
+      { key: 'streetAddress', label: 'Street Address' },
+      { key: 'suburb', label: 'Suburb' },
+      { key: 'postcode', label: 'Post Code' },
+      { key: 'state', label: 'State' },
+      { key: 'country', label: 'Country' },
+      { key: 'companyName', label: 'Company Name' },
+      { key: 'companyRegistrationNumber', label: 'Company Registration Number' },
+      { key: 'metadata', label: 'Metadata' },
     ],
   },
   key: 'payer_create',

@@ -1,11 +1,10 @@
+const { BASE_URL } = require('../constants');
+
 const perform = (z, bundle) => {
   const options = {
-    url: `${process.env.BASE_URL}/${bundle.authData.environment}/events`,
+    url: `${BASE_URL}/${bundle.authData.environment}/events`,
     method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      Authorization: `Bearer ${bundle.authData.access_token}`,
-    },
+    headers: { },
     params: {
       page: bundle.meta.page + 1,
       eventType: bundle.inputData.eventType,

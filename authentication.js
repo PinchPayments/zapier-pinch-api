@@ -1,19 +1,26 @@
+'use strict';
+
+const baseOauthUrl = 'https://api.getpinch.com.au';
+
+
 module.exports = {
   type: 'session',
   test: {
-    url: ' https://api.getpinch.com.au/{{bundle.authData.environment}}/health/auth',
+    url: `${baseOauthUrl}/{{bundle.authData.environment}}/health/auth`,
     method: 'GET',
     params: {},
-    headers: {
-      Authorization: 'Bearer {{bundle.authData.access_token}}',
-      'X-SECRET-KEY': '{{bundle.authData.secret_key}}',
-      'X-MERCHANT-ID': '{{bundle.authData.merchant_id}}',
-      'X-ENVIRONMENT': '{{bundle.authData.environment}}',
-    },
+    headers: {},
     body: {},
     removeMissingValuesFrom: {},
   },
   fields: [
+    {
+      computed: false,
+      key: 'merchant_id',
+      required: true,
+      label: 'Merchant Id',
+      type: 'string',
+    },
     {
       computed: false,
       key: 'secret_key',
@@ -21,13 +28,6 @@ module.exports = {
       label: 'Secret Key',
       inputFormat: 'sk_{{input}}',
       type: 'password',
-    },
-    {
-      computed: false,
-      key: 'merchant_id',
-      required: true,
-      label: 'Merchant Id',
-      type: 'string',
     },
     {
       computed: false,

@@ -22,7 +22,7 @@ jobs:
     - name: Install Zapier CLI
       run: npm install -g zapier-platform-cli
 
-    - name: Deploy App
+    - name: Deploy to Zapier
       env:
         ZAPIER_DEPLOY_KEY: ${{ secrets.ZAPIER_DEPLOY_KEY }}
       run: zapier push
