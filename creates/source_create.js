@@ -1,22 +1,29 @@
 const { BASE_URL } = require('../constants');
 
+const createSource = (z, bundle) => {
+  const options = {
+    url: `${BASE_URL}/${bundle.authData.environment}/payers/${bundle.inputData.payerId}/sources`,
+    method: 'POST',
+    body: {
+      sourceType: bundle.inputData.sourceType,
+      payerId: bundle.inputData.payerId,
+      bankAccountBsb: bundle.inputData.bankAccountBsb,
+      bankAccountNumber: bundle.inputData.bankAccountNumber,
+      bankAccountName: bundle.inputData.bankAccountName,
+      creditCardToken: bundle.inputData.creditCardToken
+    },
+  };
+
+  return z.request(options).then((response) => {
+    response.throwForStatus();
+    const results = response.json;
+    return results;
+  });
+}
+
 module.exports = {
   operation: {
-    perform: {
-      url: `${BASE_URL}/{{bundle.authData.environment}}/payers/{{bundle.inputData.payerId}}/sources`,
-      method: 'POST',
-      params: {},
-      headers: {},
-      body: {
-        sourceType: '{{bundle.inputData.sourceType}}',
-        payerId: '{{bundle.inputData.payerId}}',
-        bankAccountBsb: '{{bundle.inputData.bankAccountBsb}}',
-        bankAccountNumber: '{{bundle.inputData.bankAccountNumber}}',
-        bankAccountName: '{{bundle.inputData.bankAccountName}}',
-        creditCardToken: '{{bundle.inputData.creditCardToken}}',
-      },
-      removeMissingValuesFrom: {},
-    },
+    perform: createSource,
     inputFields: [
       {
         key: 'payerId',

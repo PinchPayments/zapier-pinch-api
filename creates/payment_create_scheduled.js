@@ -1,22 +1,31 @@
 
 const { BASE_URL } = require('../constants');
+const { PaymentSample, PaymentOutputFields } = require('../resources/payment');
+
+
+const createPayment = (z, bundle) => {
+  const options = {
+    url: `${BASE_URL}/${bundle.authData.environment}/payments`,
+    method: 'POST',
+    body: {
+      id: bundle.inputData.id,
+      payerId: bundle.inputData.payerId,
+      amount: bundle.inputData.amount,
+      transactionDate: bundle.inputData.transactionDate,
+      description: bundle.inputData.description,
+    },
+  };
+
+  return z.request(options).then((response) => {
+    response.throwForStatus();
+    const results = response.json;
+    return results;
+  });
+}
 
 module.exports = {
   operation: {
-    perform: {
-      url: `${BASE_URL}/{{bundle.authData.environment}}/payments`,
-      method: 'POST',
-      params: {},
-      headers: {},
-      body: {
-        id: '{{bundle.inputData.id}}',
-        payerId: '{{bundle.inputData.payerId}}',
-        amount: '{{bundle.inputData.amount}}',
-        transactionDate: '{{bundle.inputData.transactionDate}}',
-        description: '{{bundle.inputData.description}}',
-      },
-      removeMissingValuesFrom: {},
-    },
+    perform: createPayment,
     inputFields: [
       {
         key: 'id',
@@ -64,7 +73,9 @@ module.exports = {
         altersDynamicFields: false,
       },
     ],
-  },
+    sample: PaymentSample,
+    outputFields: PaymentOutputFields,
+  },     
   key: 'payment_create_scheduled',
   noun: 'Payment',
   display: {
