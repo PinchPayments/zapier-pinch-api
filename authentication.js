@@ -2,12 +2,10 @@
 
 const { BASE_URL } = require('./constants');
 
-
-const performTest = (z, bundle) => z.request({
-  url: `${BASE_URL}/{{bundle.authData.environment}}/health/auth`,
+const test = (z, bundle) => z.request({
+  url: `${BASE_URL}/${bundle.authData.environment}/health/auth`,
   method: 'GET'
 });
-
 
 const getSessionKey = async (z, bundle) => {
 
@@ -69,7 +67,7 @@ module.exports = {
     },
   ],
   sessionConfig: { perform: getSessionKey },
-  test: performTest,
+  test: test,
   connectionLabel:
     '{{bundle.inputData.merchant}} - {{bundle.inputData.email}} ({{bundle.authData.environment}})',
 };
