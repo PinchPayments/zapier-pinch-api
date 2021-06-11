@@ -33,7 +33,7 @@ module.exports = {
     sample: {
       id: 'evt_hTitMnSkelhXYS',
       type: 'payer-created',
-      eventDate: '2021-04-25T03:41:06.601476',
+      eventDate: '2021-04-25T03:41:06Z',
       metadata: { payerName: 'Test usr' },
       data: {
         payer: {
@@ -52,7 +52,7 @@ module.exports = {
           metadata: null,
           sources: [
             {
-              id: 'src_XQGHBxBpAw2W84',
+              id: 'src_XXXXXXXXXXXXXX',
               sourceType: 'bank-account',
               bankAccountNumber: '000000000',
               bankAccountBsb: '000000',
@@ -68,11 +68,10 @@ module.exports = {
           ],
           agreements: [
             {
-              id: 'agr_BI9Hq00qZrCfq7',
-              anonymousViewToken:
-                'c80gmEGATOaOiqn2CJnBsAfxQADq1ZFfGDMB5Wu4xAyvrcRKDgo32pObdDQlAaI4',
-              agreementDateUtc: '2021-04-25T23:26:41.3504752',
-              confirmedDateUtc: '2021-04-25T23:26:41.3916419',
+              id: 'agr_XXXXXXXXXXXXXX',
+              anonymousViewToken: '',
+              agreementDateUtc: '2021-04-25T23:26:41Z',
+              confirmedDateUtc: '2021-04-25T23:26:41Z',
               status: 'active',
             },
           ],

@@ -48,7 +48,7 @@ module.exports = {
     sample: {
       id: 'evt_XXXXXXXXXXXXXX',
       type: 'realtime-payment',
-      eventDate: '2021-04-26T07:15:53.0251702',
+      eventDate: '2021-04-26T07:15:53Z',
       metadata: { status: 'approved', amount: 1000 },
     },
     outputFields: [

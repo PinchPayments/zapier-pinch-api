@@ -64,8 +64,8 @@ module.exports = {
         {
           id: 'agr_XXXXXXXXXXXXXX',
           anonymousViewToken: '',
-          agreementDateUtc: '2021-04-25T23:26:41.3504752',
-          confirmedDateUtc: '2021-04-25T23:26:41.3916419',
+          agreementDateUtc: '2021-04-25T23:26:41Z',
+          confirmedDateUtc: '2021-04-25T23:26:41Z',
           status: '',
         },
       ],
