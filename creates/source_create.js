@@ -117,6 +117,6 @@ module.exports = {
     label: 'Add a Source to a Payer',
     description: 'Add a Source to a payer',
     hidden: false,
-    important: true,
+    important: false,
   },
 };
