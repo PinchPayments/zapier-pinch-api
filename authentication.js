@@ -1,6 +1,6 @@
 'use strict';
 
-const { BASE_URL } = require('./constants');
+const { BASE_URL, BASE_AUTH_URL } = require('./constants');
 
 const test = (z, bundle) => z.request({
   url: `${BASE_URL}/${bundle.authData.environment}/health/auth`,
@@ -15,7 +15,7 @@ const getSessionKey = async (z, bundle) => {
   let authHeader = 'Basic ' + Base64.encode(username + ":" + password);
 
   const options = {
-    url: `${process.env.BASE_AUTH_URL}/connect/token`,
+    url: `${BASE_AUTH_URL}/connect/token`,
     method: 'POST',
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
@@ -47,7 +47,7 @@ module.exports = {
       key: 'merchant_id',
       required: true,
       label: 'Merchant Id',
-      type: 'string',
+      type: 'string'      
     },
     {
       computed: false,
@@ -68,6 +68,5 @@ module.exports = {
   ],
   sessionConfig: { perform: getSessionKey },
   test: test,
-  connectionLabel:
-    '{{bundle.inputData.merchant}} - {{bundle.inputData.email}} ({{bundle.authData.environment}})',
+  connectionLabel: '{{bundle.inputData.merchant}} - {{bundle.inputData.email}} ({{bundle.authData.environment}})',
 };

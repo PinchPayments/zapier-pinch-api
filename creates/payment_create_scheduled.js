@@ -1,6 +1,6 @@
 
 const { BASE_URL } = require('../constants');
-const { PaymentSample, PaymentOutputFields } = require('../resources/payment');
+const { PaymentSample, PaymentOutputFields } = require('../samples/payment');
 
 
 const createPayment = (z, bundle) => {
