@@ -4,7 +4,7 @@
   "description": "Pinch is a PCI Compliant, Australian payments platform offering automated Bank Account Direct Debit and Credit Card payments for standard and repeating invoices or standalone transactions.",
   "main": "index.js",
   "scripts": {
-    "zapier:test": "zapier test -d",
+    "zapier:test": "zapier test",
     "test": "mocha --recursive -t 10000"
   },
   "engines": {
