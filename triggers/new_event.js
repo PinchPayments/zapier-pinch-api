@@ -52,10 +52,10 @@ module.exports = {
       metadata: { status: 'approved', amount: 1000 },
     },
     outputFields: [
-      { key: 'id' },
-      { key: 'type' },
-      { key: 'eventDate' },
-      { key: 'metadata' },
+      { key: 'id', type: 'string' },
+      { key: 'type', type: 'string' },
+      { key: 'eventDate', type: 'datetime' },
+      { key: 'metadata', type: 'dict' }
     ],
   },
   key: 'new_event',
