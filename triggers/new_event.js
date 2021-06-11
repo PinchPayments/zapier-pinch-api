@@ -55,7 +55,7 @@ module.exports = {
       { key: 'id', type: 'string' },
       { key: 'type', type: 'string' },
       { key: 'eventDate', type: 'datetime' },
-      { key: 'metadata', type: 'dict' }
+      { key: 'metadata', dict: true }
     ],
   },
   key: 'new_event',
