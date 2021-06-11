@@ -37,7 +37,7 @@ module.exports = {
       metadata: { payerName: 'Test usr' },
       data: {
         payer: {
-          id: 'pyr_6jnIJPJF6elSsz',
+          id: 'pyr_XXXXXXXXXXXXXX',
           firstName: 'Test',
           lastName: 'usr',
           emailAddress: 'test.usr@mailinator.com',
