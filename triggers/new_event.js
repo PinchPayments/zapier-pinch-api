@@ -48,14 +48,14 @@ module.exports = {
     sample: {
       id: 'evt_XXXXXXXXXXXXXX',
       type: 'realtime-payment',
-      eventDate: '2021-04-26T07:15:53.0251702',
+      eventDate: '2021-04-26T07:15:53Z',
       metadata: { status: 'approved', amount: 1000 },
     },
     outputFields: [
-      { key: 'id' },
-      { key: 'type' },
-      { key: 'eventDate' },
-      { key: 'metadata' },
+      { key: 'id', type: 'string' },
+      { key: 'type', type: 'string' },
+      { key: 'eventDate', type: 'datetime' },
+      { key: 'metadata', dict: true }
     ],
   },
   key: 'new_event',
