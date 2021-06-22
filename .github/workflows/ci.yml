@@ -23,4 +23,6 @@ jobs:
     - name: Run Zapier Tests
       env:
         ENVIRONMENT: test
+        MERCHANT_ID:  ${{ secrets.MERCHANT_ID }}
+        SECRET_KEY:  ${{ secrets.SECRET_KEY }}
       run: npm run zapier:test
