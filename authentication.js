@@ -7,8 +7,7 @@ const test = (z, bundle) => z.request({
   method: 'GET'
 });
 
-const getAccessToken = async (z, bundle) => {
- 
+const getAccessToken = async (z, bundle) => { 
   let username = bundle.authData.merchant_id;
   let password = bundle.authData.secret_key;
   let authHeader = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
@@ -16,10 +15,9 @@ const getAccessToken = async (z, bundle) => {
   const response = await z.request(`${BASE_AUTH_URL}/connect/token`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': authHeader
     },
-    body: {
+    form: {
       'grant_type': 'client_credentials',
       'scope': 'api1'
     }
