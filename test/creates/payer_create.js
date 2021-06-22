@@ -17,10 +17,9 @@ describe('Create - payer_create', () => {
       },
     };
 
-    const result = await appTester(
-      App.creates['payer_create'].operation.perform,
-      bundle
-    );
+    var authResult = await appTester(App.authentication.sessionConfig.perform, bundle);
+    bundle.authData.access_token = authResult.access_token;
+    const result = await appTester(App.creates['payer_create'].operation.perform, bundle);
     result.should.not.be.an.Array();
   });
 });

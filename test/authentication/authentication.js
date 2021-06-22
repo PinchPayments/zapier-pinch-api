@@ -10,7 +10,7 @@ const appTester = zapier.createAppTester(App);
 describe('Session Auth Tests', () => {
   zapier.tools.env.inject();
 
-  it('Has an exchange for merchant/secret', (done) => {
+  it('Has an exchange for merchant/secret', async () => {
     const bundle = {
       authData: {
         merchant_id: process.env.MERCHANT_ID,
@@ -19,17 +19,12 @@ describe('Session Auth Tests', () => {
       }
     };
 
-    appTester(App.authentication.sessionConfig.perform, bundle)
-      .then((newAuthData) => {
-        const decodedToken = jwt_decode(newAuthData.access_token);
-        decodedToken.merchant_id.should.eql(bundle.authData.merchant_id.replace("_test", ""))
-        done();
-      })
-      .catch(done);
-
+    const newAuthData = await appTester(App.authentication.sessionConfig.perform, bundle);
+    const decodedToken = jwt_decode(newAuthData.access_token);
+    decodedToken.merchant_id.should.eql(bundle.authData.merchant_id.replace("_test", ""))
   });
 
-  it('Has auth details added to every request', (done) => {
+  it('Has auth details added to every request', async () => {
     const bundle = {
       authData: {
         merchant_id: process.env.MERCHANT_ID,
@@ -38,18 +33,13 @@ describe('Session Auth Tests', () => {
       }
     };
 
-    appTester(App.authentication.sessionConfig.perform, bundle)
-      .then((newAuthData) => {
-        bundle.authData.access_token = newAuthData;
-        appTester(App.authentication.test, bundle)
-          .then((response) => {
-            response.status.should.eql(200);
-            response.environment.should.eql(bundle.environment);
-            done();
-          })
-          .catch(done);
-        done();
-      })
-      .catch(done);
+    const newAuthData = await appTester(App.authentication.sessionConfig.perform, bundle);
+    bundle.authData.access_token = newAuthData.access_token;
+
+    var response = await appTester(App.authentication.test, bundle);
+    
+    response.request.headers['Authorization'].should.eql('Bearer ' + newAuthData.access_token);    
+    response.status.should.eql(200);
+    response.data.environment.toLowerCase().should.eql(bundle.authData.environment.toLowerCase());
   });
 });
