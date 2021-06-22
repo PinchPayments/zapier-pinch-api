@@ -14,7 +14,6 @@ module.exports = {
   authentication: authentication,
   
   beforeRequest: [
-    includeJsonContentTypes,
     includeBearerToken
   ],
   creates: {
