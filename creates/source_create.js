@@ -16,7 +16,7 @@ const createSource = (z, bundle) => {
 
   return z.request(options).then((response) => {
     response.throwForStatus();
-    const results = response.json;
+    const results = response.data;
     return results;
   });
 }
@@ -87,7 +87,7 @@ module.exports = {
       sourceType: 'bank-account',
       bankAccountNumber: '000000000',
       bankAccountBsb: '000000',
-      bankAccountName: 'Test Usr',
+      bankAccountName: 'TesT Account Name',
       creditCardToken: null,
       cardHolderName: null,
       expiryDate: null,

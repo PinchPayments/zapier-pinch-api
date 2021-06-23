@@ -9,10 +9,7 @@ const perform = (z, bundle) => {
 
   return z.request(options).then((response) => {
     response.throwForStatus();
-    const results = response.json;
-
-    // You can do any parsing you need for results here before returning them
-
+    const results = response.data;
     return [results];
   });
 };

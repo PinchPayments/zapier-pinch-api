@@ -18,7 +18,7 @@ const createPayment = (z, bundle) => {
 
   return z.request(options).then((response) => {
     response.throwForStatus();
-    const results = response.json;
+    const results = response.data;
     return results;
   });
 }
