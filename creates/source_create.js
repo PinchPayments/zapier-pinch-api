@@ -87,7 +87,7 @@ module.exports = {
       sourceType: 'bank-account',
       bankAccountNumber: '000000000',
       bankAccountBsb: '000000',
-      bankAccountName: 'Test Usr',
+      bankAccountName: 'TesT Account Name',
       creditCardToken: null,
       cardHolderName: null,
       expiryDate: null,

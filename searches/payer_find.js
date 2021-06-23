@@ -6,7 +6,7 @@ const perform = (z, bundle) => {
     method: 'GET',
     headers: {},
   };
-
+  
   return z.request(options).then((response) => {
     response.throwForStatus();
     const results = response.data;

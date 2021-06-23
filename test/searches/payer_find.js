@@ -2,11 +2,19 @@ require('should');
 
 const zapier = require('zapier-platform-core');
 
+const nock = require('nock');
 const App = require('../../index');
 const appTester = zapier.createAppTester(App);
 
 describe('Search - payer_find', () => {
   zapier.tools.env.inject();
+
+  let apiMock = nock('https://api.getpinch.com.au');
+
+  afterEach(() => {
+      nock.cleanAll();
+  });
+
 
   it('should get an array', async () => {
     const bundle = {
@@ -16,8 +24,14 @@ describe('Search - payer_find', () => {
         environment: process.env.ENVIRONMENT
       },
 
-      inputData: {},
+      inputData: {
+        payerId: "pyr_XXXXXXXXXXXXXX"},
     };
+
+    
+    apiMock
+      .get(`/test/payers/${bundle.inputData.payerId}`)
+      .reply(200, App.searches['payer_find'].operation.sample);
 
     const results = await appTester(
       App.searches['payer_find'].operation.perform,
