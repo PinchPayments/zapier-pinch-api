@@ -1,8 +1,8 @@
 require('should');
-
+const nock = require('nock');
 const zapier = require('zapier-platform-core');
-
 const App = require('../../index');
+
 const appTester = zapier.createAppTester(App);
 
 describe('Create - payer_create', () => {
@@ -16,6 +16,10 @@ describe('Create - payer_create', () => {
         environment: process.env.ENVIRONMENT
       },
     };
+
+    nock('https://api.getpinch.com.au')
+      .post('/test/payers')
+      .reply(200, App.creates['payer_create'].operation.sample);
 
     var authResult = await appTester(App.authentication.sessionConfig.perform, bundle);
     bundle.authData.access_token = authResult.access_token;
