@@ -7,6 +7,10 @@ const test = (z, bundle) => z.request({
   method: 'GET'
 });
 
+const getLabel = (z, bundle) => {
+  return `${bundle.inputData.merchant} - ${bundle.inputData.email} (${bundle.authData.environment})`;
+};
+
 const getAccessToken = async (z, bundle) => { 
   let username = bundle.authData.merchant_id;
   let password = bundle.authData.secret_key;
@@ -37,7 +41,7 @@ module.exports = {
       required: true,
       label: 'Merchant Id',
       type: 'string',
-      helpText: 'Go to the [Integrations](https://app.getpinch.com.au/Integrations) screen on pinch to find your Merchant Id (under API Keys).'
+      helpText: 'Go to the [Integrations](https://app.getpinch.com.au/Integrations) screen on Pinch Portal (under API Keys - supports Live mode only) or [API Keys](https://web.getpinch.com.au/api-keys) on the developer portal (both Live and Test mode) to find your Merchant Id.'
     },
     {
       computed: false,
@@ -45,7 +49,7 @@ module.exports = {
       required: true,
       label: 'Secret Key',
       type: 'password',
-      helpText: 'Go to the [Integrations](https://app.getpinch.com.au/Integrations) screen on pinch to find your Secret Key (under API Keys).'
+      helpText: 'Go to the [Integrations](https://app.getpinch.com.au/Integrations) screen on Pinch Portal (under API Keys - supports Live mode only) or [API Keys](https://web.getpinch.com.au/api-keys) on the developer portal (both Live and Test mode) to find your Secret Key.'
     },
     {
       computed: false,
@@ -60,5 +64,5 @@ module.exports = {
   ],
   sessionConfig: { perform: getAccessToken },
   test: test,
-  connectionLabel: '{{bundle.inputData.merchant}} - {{bundle.inputData.email}} ({{bundle.authData.environment}})',
+  connectionLabel: getLabel
 };
