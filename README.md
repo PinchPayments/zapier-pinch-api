@@ -20,7 +20,7 @@ Run `npm ci` then `npm run zapier:test` in your console to run the zapier integr
 
 Step 1: Pinch Zapier integration is still in Beta so [use this link](https://zapier.com/developer/public-invite/132077/5e3cdd4e731d526ef35fe4e8aa2cef37/) to invite yourself to the beta.
 
-Step 2: [Signup to Pinch](https://www.getpinch.com.au/get-pinch/) so that you can access your generated API keys form the portal.
+Step 2: [Signup to Pinch](https://www.getpinch.com.au/get-pinch/) so that you can access your generated API keys from the portal.
 
 Step 3: In Zapier, select new Zap and search for `Pinch` and add connection. You will be presented with a screen below. fill this out with the required details by clicking the links in the help text to be taken to the API keys area. 
 
