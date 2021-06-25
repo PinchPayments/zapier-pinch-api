@@ -6,7 +6,7 @@ const sourceCreateCreate = require('./creates/source_create.js');
 const paymentCreateRealtimeCreate = require('./creates/payment_create_realtime.js');
 const payerFindSearch = require('./searches/payer_find.js');
 const eventFindSearch = require('./searches/event_find.js');
-const {includeBearerToken} = require('./before-handlers');
+const {includeBearerToken, includePinchApiVersion} = require('./before-handlers');
 
 module.exports = {
   version: require('./package.json').version,
@@ -14,7 +14,8 @@ module.exports = {
   authentication: authentication,
   
   beforeRequest: [
-    includeBearerToken
+    includeBearerToken,
+    includePinchApiVersion
   ],
   creates: {
     [payerCreateCreate.key]: payerCreateCreate,

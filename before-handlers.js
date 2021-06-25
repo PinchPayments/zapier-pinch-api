@@ -8,6 +8,12 @@ const includeBearerToken = (request, z, bundle) => {
   return request;
 };
 
+const includePinchApiVersion = (request, z, bundle) => {
+  request.headers['pinch-version'] = "2020.1";
+  return request;
+};
+
 module.exports = {
-  includeBearerToken
+  includeBearerToken,
+  includePinchApiVersion
 };
