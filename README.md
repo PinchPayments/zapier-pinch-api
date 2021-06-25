@@ -24,13 +24,11 @@ Step 2: [Signup to Pinch](https://www.getpinch.com.au/get-pinch/) so that you ca
 
 Step 3: In Zapier, select new Zap and search for `Pinch` and add connection. You will be presented with a screen below. fill this out with the required details by clicking the links in the help text to be taken to the API keys area. 
 
-![step 3](./res/images/add-connection.png)
-
+![add-connection](https://user-images.githubusercontent.com/241857/123360850-5829e380-d5b1-11eb-8d6d-9f17e1bbf39a.PNG)
 
 Step 4: Press confirm and Zapier will create a connection to Pinch which you can use for the Intregrations below.
 
-
-![step 4](./res/images/connections.png)
+![connections](https://user-images.githubusercontent.com/241857/123360864-5e1fc480-d5b1-11eb-8469-7c40bcf180d7.PNG)
 
 *Note*: You can add as many connections as you would like. On the example above we have a test connection as well as a live connection. Useful if you would like to test out a Zap functionality without affecting your production merchant.
 
