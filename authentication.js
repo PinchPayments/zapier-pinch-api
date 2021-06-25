@@ -41,7 +41,7 @@ module.exports = {
       required: true,
       label: 'Merchant Id',
       type: 'string',
-      helpText: 'Go to the [Integrations](https://app.getpinch.com.au/Integrations) screen on Pinch Portal (under API Keys - supports Live mode only) or [API Keys](https://web.getpinch.com.au/api-keys) on the developer portal (both Live and Test mode) to find your Merchant Id.'
+      helpText: 'This can be found in the [Pinch Portal - Integrations](https://app.getpinch.com.au/Integrations) screen (under API Keys).'
     },
     {
       computed: false,
@@ -49,7 +49,7 @@ module.exports = {
       required: true,
       label: 'Secret Key',
       type: 'password',
-      helpText: 'Go to the [Integrations](https://app.getpinch.com.au/Integrations) screen on Pinch Portal (under API Keys - supports Live mode only) or [API Keys](https://web.getpinch.com.au/api-keys) on the developer portal (both Live and Test mode) to find your Secret Key.'
+      helpText: 'This can be found in the [Pinch Portal - Integrations](https://app.getpinch.com.au/Integrations) screen (under API Keys).'
     },
     {
       computed: false,
@@ -57,9 +57,9 @@ module.exports = {
       required: true,
       type: 'string',
       label: 'Environment',
-      default: 'test',
-      choices: ['test', 'live'],
-      helpText: 'In Test mode you can trial Pinch in a fully functional sandboxed environment. When you\'re ready to use this in production and process real transactions, set this to Live. See [Test and Live Mode](https://docs.getpinch.com.au/docs/test-and-live-mode) in our documentation for more information.'
+      default: 'live',
+      choices: ['live', 'test'],
+      helpText: 'ADVANCED: If you have a developer account, you can use your Test Merchant ID and Test Secret Key, by selecting \'test\' here. See [Test and Live Mode](https://docs.getpinch.com.au/docs/test-and-live-mode) in our documentation for more information.'
     },
   ],
   sessionConfig: { perform: getAccessToken },
