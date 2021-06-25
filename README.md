@@ -2,7 +2,7 @@
 
 # Zapier CLI Integration
 
-Source code for the Zapier integration with Pinch Payments
+Source code for the Zapier integration with [Pinch](https://getpinch.com.au)
 
 ## Running the Zapier tests locally
 
@@ -16,13 +16,13 @@ SECRET_KEY=sk_test_XXXXXXXXXXXXXXXXXX
 
 Run `npm ci` then `npm run zapier:test` in your console to run the zapier integration tests.
 
-## Adding Pinch Payments to your Zapier
+## Adding Pinch to your Zapier
 
-Step 1: Pinch Payments is still in Beta so use this link to invite yourself to test it out [https://zapier.com/developer/public-invite/132077/5e3cdd4e731d526ef35fe4e8aa2cef37/](https://zapier.com/developer/public-invite/132077/5e3cdd4e731d526ef35fe4e8aa2cef37/)
+Step 1: Pinch Zapier integration is still in Beta so [use this link](https://zapier.com/developer/public-invite/132077/5e3cdd4e731d526ef35fe4e8aa2cef37/) to invite yourself to the beta.
 
-Step 2: [Signup to Pinch Payments](https://www.getpinch.com.au/get-pinch/) so that you can access your generated API keys form the portal.
+Step 2: [Signup to Pinch](https://www.getpinch.com.au/get-pinch/) so that you can access your generated API keys form the portal.
 
-Step 3: In Zapier, select new Zap and search for `Pinch Payments` and add connection. You will be presented with a screen below. fill this out with the required details by clicking the links in the help text to be taken to the API keys area. 
+Step 3: In Zapier, select new Zap and search for `Pinch` and add connection. You will be presented with a screen below. fill this out with the required details by clicking the links in the help text to be taken to the API keys area. 
 
 ![step 3](./res/images/add-connection.png)
 
@@ -51,7 +51,7 @@ This integration contains 1 trigger, 4 actions, and 2 searches:
 
 ## Triggers
 
-Using the Pinch Payments integration, you only need to configure the Zap in Zapier. The events are queried via polling and will trigger each time a webhook event is fired off.
+Using the Pinch integration, you only need to configure the Zap in Zapier. The events are queried via polling and will trigger each time a webhook event is fired off.
 
 The output of a trigger in Zapier is exactly what [Pinch's Event](https://docs.getpinch.com.au/reference#list-all-events) is retrieved by Zapier. It will looks something like this:
 
@@ -78,23 +78,23 @@ The output of a trigger in Zapier is exactly what [Pinch's Event](https://docs.g
 }
 ```
 
-In each trigger, you have the option to provide an `event-type`. If you do, the Zap will filtered for single types only. If you leave it empty, the Zap will proceed for all languages.
+In each trigger, you have the option to provide an `event-type`. If you do, the Zap will be filtered for single types only. If you leave it empty, the Zap will proceed for all events.
 
 ## Actions
 
 The integration contains actions to upsert payers, create a scheduled payment, create a realtime payment and also adding a payment source to a payer. For many of these steps, you are required to enter data in a particular format that Pinch will understand. See the Pinch documentation on what objects are expected and returned for each action.
 
-[Create or Update Payer](https://docs.getpinch.com.au/reference#payersid-1)
-[Create Realtime Payment](https://docs.getpinch.com.au/reference#execute-real-time-payment)
-[Create or Update Scheduled Payment](https://docs.getpinch.com.au/reference#save-a-payment)
-[Create a Payment Source](https://docs.getpinch.com.au/reference#save-a-payment-source)
+* [Create or Update Payer](https://docs.getpinch.com.au/reference#payersid-1)
+* [Create Realtime Payment](https://docs.getpinch.com.au/reference#execute-real-time-payment)
+* [Create or Update Scheduled Payment](https://docs.getpinch.com.au/reference#save-a-payment)
+* [Create a Payment Source](https://docs.getpinch.com.au/reference#save-a-payment-source)
 
 ## Searches
 
 Because the event notification from Pinch only contains basic information such as a EventId and EntityId (such as PaymentId or PayerId), you may need to search Pinch for more information. For example, to load all data about a Payer you can use a __Find Payer__ action. You can search for an item based on the `id` returned from the event.
 
-[Find Payer](https://docs.getpinch.com.au/reference#get-payer)
-[Find Event](https://docs.getpinch.com.au/reference#get-event)
+* [Find Payer](https://docs.getpinch.com.au/reference#get-payer)
+* [Find Event](https://docs.getpinch.com.au/reference#get-event)
 
 ## Examples
 
