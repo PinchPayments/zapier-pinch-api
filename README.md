@@ -6,7 +6,7 @@ Source code for the Zapier integration with [Pinch](https://getpinch.com.au)
 
 ## Running the Zapier tests locally
 
-Create a `.env` file in your root directory and fill out with your pinch test keys 
+Create a `.env` file in your root directory and fill it out with your pinch test keys.
 
 ```
 ENVIRONMENT=test
