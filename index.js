@@ -6,6 +6,7 @@ const sourceCreateCreate = require('./creates/source_create.js');
 const paymentCreateRealtimeCreate = require('./creates/payment_create_realtime.js');
 const payerFindSearch = require('./searches/payer_find.js');
 const eventFindSearch = require('./searches/event_find.js');
+const subscriptionFindSearch = require('./searches/subscription_find.js');
 const {includeBearerToken, includePinchApiVersion} = require('./before-handlers');
 
 module.exports = {
@@ -26,6 +27,7 @@ module.exports = {
   searches: {
     [payerFindSearch.key]: payerFindSearch,
     [eventFindSearch.key]: eventFindSearch,
+    [subscriptionFindSearch.key]: subscriptionFindSearch
   },
   triggers: { [newEventTrigger.key]: newEventTrigger },
 };
