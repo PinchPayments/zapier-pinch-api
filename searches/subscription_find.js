@@ -2,7 +2,7 @@ const { BASE_URL } = require('../constants');
 
 const perform = (z, bundle) => {
     const options = {
-        url: `${BASE_URL}/${bundle.authData.environment}/events/${bundle.inputData.subscriptionId}`,
+        url: `${BASE_URL}/${bundle.authData.environment}/subscriptions/${bundle.inputData.subscriptionId}`,
         method: 'GET',
         headers: {},
     };
