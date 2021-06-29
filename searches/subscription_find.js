@@ -78,7 +78,7 @@ module.exports = {
                 startDate: "2021-06-21T14:00:00.0000000Z"
             },
             totalAmount: 100000,
-            metadata: "",
+            metadata: null,
             surcharge: [
                 "bank-account",
                 "credit-card"
@@ -86,25 +86,60 @@ module.exports = {
         },
         outputFields: [
             { key: 'id' },
-            { key: 'payer' },
+            { key: 'payer', dict: true },
             { key: 'planId' },
             { key: 'planName' },
             { key: 'status' },
             { key: 'startDate' },
-            { key: 'freePeriods', dict: true },
-            { key: 'fixedPayments', dict: true },
-            { key: 'recurringPayment' },
-            { key: 'totalAmount' },
+            { 
+                key: 'freePeriods',
+                list: true,
+                children: [
+                    { key: 'durationInterval', type: 'string' },
+                    { key: 'durationOffset', type: 'number' },
+                    { key: 'metadata', dict: true },
+                    { key: 'startDate', type: 'datetime' }
+                ]
+            },
+            { 
+                key: 'fixedPayments',
+                list: true,
+                children: [
+                    { key: 'amount',type: 'number' },
+                    { key: 'description', type: 'text' },
+                    { key: 'cancelPlanOnFailure', type: 'string' },
+                    { key: 'metadata', dict: true },
+                    { key: 'transactionDate', type: 'datetime' }
+                ]
+            },            
+            { 
+                key: 'recurringPayment',
+                dict: true,
+                children: [
+                    { key: 'amount', type: 'number' },
+                    { key: 'endAfterNumberOfPayments', type: 'string' },
+                    { key: 'endAfterTotalAmount', type: 'string' },
+                    { key: 'frequencyInterval', type: 'string' },
+                    { key: 'frequencyOffset', type: 'number' },
+                    { key: 'description', type: 'string' },
+                    { key: 'cancelPlanOnFailure', type: 'boolean' },
+                    { key: 'metadata', dict: true },
+                    { key: 'endAfterDate', type: 'datetime' },
+                    { key: 'startDate', type: 'datetime' }
+                ]
+            },
+
+            { key: 'totalAmount', type: 'number' },
             { key: 'metadata', dict: true },
-            { key: 'surcharge', dict: true },
+            { key: 'surcharge', list: true },
         ],
     },
     key: 'subscription_find',
     noun: 'Subscription',
     display: {
-        label: 'Find a subscription',
-        description: 'Finds a subscription using the SubscriptionId',
+        label: 'Find a Subscription',
+        description: 'Finds a Subscription using the SubscriptionId',
         hidden: false,
-        important: true,
+        important: false
     },
 };
