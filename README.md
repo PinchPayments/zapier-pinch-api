@@ -1,3 +1,6 @@
+
+![Pinch Zapier](https://user-images.githubusercontent.com/241857/124198358-d89d9680-db13-11eb-9998-81e8ed11df1c.png)
+
 [![Deploy](https://github.com/PinchPayments/zapier-pinch-api/actions/workflows/deploy.yml/badge.svg)](https://github.com/PinchPayments/zapier-pinch-api/actions/workflows/deploy.yml)
 
 # Zapier CLI Integration
@@ -18,7 +21,7 @@ Run `npm ci` then `npm run zapier:test` in your console to run the zapier integr
 
 ## Adding Pinch to your Zapier
 
-**Step 1**: Pinch Zapier integration is still in beta so [use this link](https://zapier.com/developer/public-invite/132077/5e3cdd4e731d526ef35fe4e8aa2cef37/) to invite yourself to the beta.
+**Step 1**: Pinch Zapier integration is in public beta. Find the [Integration on Zapier](https://zapier.com/apps/pinch-payments/integrations) and connect to your Zapier account.
 
 **Step 2**: [Signup to Pinch](https://www.getpinch.com.au/get-pinch/) so that you can access your generated API keys from the portal.
 
