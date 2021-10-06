@@ -49,9 +49,9 @@ module.exports = {
       {
         key: 'amount',
         label: 'Amount',
-        type: 'number',
+        type: 'integer',
         helpText:
-          'Specified amount (in Cents) for the payment. Minimum value is 100 ($1)',
+          'Specified amount (in cents) for the payment. Minimum value is 100 ($1)',
         required: true,
         list: false,
         altersDynamicFields: false,
