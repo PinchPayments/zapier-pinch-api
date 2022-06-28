@@ -84,17 +84,17 @@ module.exports = {
         label: 'Source Id',
         type: 'string',
         helpText:
-          'Optional. If you want to use an existing source on a Payer, the source can be found using the Find Payer action (in `src_XXXXXXXXXXXXXX` format) and set here. Otherwise, leave empty to set up a new payment source. Leave empty if Credit Card Token is set.',
+          'Optional. If you want to use an existing source on a Payer, the source can be found using the Find Payer action (in `src_XXXXXXXXXXXXXX` format) and set here. Otherwise, leave empty to set up a new payment source. Leave empty if Token is set.',
         required: false,
         list: false,
         altersDynamicFields: false,
       },
       {
         key: 'creditCardToken',
-        label: 'Credit Card Token',
+        label: 'Token',
         type: 'string',
         helpText:
-          'Please see [Pinch Documentation](https://docs.getpinch.com.au/docs/credit-card-payments) for instructions on how to tokenize a credit card. Leave empty if Source Id is set.',
+          'Optional. If you\'ve already added a token/source to the payer you do not need to specify this field as Pinch will default to using the oldest source. Please see [Pinch Documentation](https://docs.getpinch.com.au/docs/credit-card-payments) for instructions on how to tokenize a credit card. Leave empty if Source Id is set.',
         required: false,
         list: false,
         altersDynamicFields: false,
@@ -102,7 +102,7 @@ module.exports = {
       {
         key: 'amount',
         label: 'Amount',
-        type: 'number',
+        type: 'integer',
         helpText: 'Amount (in cents) to be debited from the payment source.',
         required: true,
         list: false,
