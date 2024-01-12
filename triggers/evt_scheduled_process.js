@@ -38,7 +38,7 @@ module.exports = {
         ]
       }
     },
-    outputFields: eventProcessedPaymentsOutputFields,
+    outputFields: eventProcessedPaymentsOutputFields(),
   },
   key: 'evt_scheduled_process',
   noun: 'Event',

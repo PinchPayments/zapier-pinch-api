@@ -1,6 +1,6 @@
 {
   "name": "pinch-payments",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Pinch is a PCI Compliant, Australian payments platform offering automated Bank Account Direct Debit and Credit Card payments for standard and repeating invoices or standalone transactions.",
   "main": "index.js",
   "scripts": {

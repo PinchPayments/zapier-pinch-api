@@ -1,5 +1,5 @@
 const { BASE_URL } = require('../constants');
-const samplePayer = require('../samples/sample_issue');
+const samplePayer = require('../samples/sample_payer');
 
 const perform = (z, bundle) => {
   const options = {
