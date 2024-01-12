@@ -9,6 +9,8 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
+    env:
+      CI: ""
 
     steps:
     - uses: actions/checkout@v2
