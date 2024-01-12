@@ -107,8 +107,6 @@ module.exports = {
   noun: 'Payer',
   display: {
     label: 'Find Payer',
-    description: 'Find a payer by their Payer Id',
-    hidden: false,
-    important: true,
+    description: 'Find a payer by their Payer Id'
   },
 };

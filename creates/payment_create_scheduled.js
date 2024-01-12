@@ -80,8 +80,6 @@ module.exports = {
   noun: 'Payment',
   display: {
     label: 'Create or Update Scheduled Payment',
-    description: 'Create or update a scheduled payment',
-    hidden: false,
-    important: true,
+    description: 'Create or update a scheduled payment'
   },
 };
