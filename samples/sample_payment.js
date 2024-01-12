@@ -1,6 +1,6 @@
 'use strict';
 
-const PaymentSample = {
+const paymentSample = {
     id: 'pmt_XXXXXXXXXXXXXX',
     attemptId: 'att_XXXXXXXX',
     amount: 1000,
@@ -29,7 +29,11 @@ const PaymentSample = {
       companyRegistrationNumber: null,
       metadata: null,
     },
-    subscription: null,
+    subscription: {
+        id: "sub_XXXXXXXXXXXXXX",
+        planId: "pln_XXXXXXXXXXXXXX",
+        planName: "Monthly Payments"
+    },
     attempts: [
       {
         id: 'att_XXXXXXXX',
@@ -77,8 +81,7 @@ const PaymentSample = {
     metadata: null,
 };
 
-
-const PaymentOutputFields = [
+const corePaymentOutputFields = [
   { key: 'id', type: 'string' },
   { key: 'attemptId', type: 'string' },
   { key: 'amount', type: 'integer' },
@@ -105,7 +108,14 @@ const PaymentOutputFields = [
   { key: 'payer__companyName', type: 'string' },
   { key: 'payer__companyRegistrationNumber', type: 'string' },
   { key: 'payer__metadata', dict: true },
-  { key: 'subscription' },
+  { key: 'subscription__id', type: 'string' },
+  { key: 'subscription__planId', type: 'string' },
+  { key: 'subscription__planName', type: 'string' },
+  { key: 'metadata', dict: true },
+];
+
+const singlePaymentOutputFields = [
+  ...corePaymentOutputFields,
   { key: 'attempts[]id', type: 'string' },
   { key: 'attempts[]amount', type: 'integer' },
   { key: 'attempts[]currency', type: 'string' },
@@ -141,11 +151,30 @@ const PaymentOutputFields = [
   { key: 'attempts[]fees__convertedTotalFee', type: 'number' },
   { key: 'attempts[]fees__convertedCurrency', type: 'string' },
   { key: 'attempts[]fees__conversionRate', type: 'number' },
-  { key: 'attempts[]status' },
-  { key: 'metadata', dict: true },
+  { key: 'attempts[]status' }
 ];
 
+const eventSinglePaymentOutputFields = () => {
+  var eventPaymentOutputs = [];
+  corePaymentOutputFields.forEach(field => {
+    var fieldClone = structuredClone(field);
+    fieldClone.key = 'data__payment__' + fieldClone.key;
+    eventPaymentOutputs.push(fieldClone);
+  });
+};
+
+const eventProcessedPaymentsOutputFields = () => {
+  var eventPaymentOutputs = [];
+  corePaymentOutputFields.forEach(field => {
+    var fieldClone = structuredClone(field);
+    fieldClone.key = 'data__payments[]' + fieldClone.key;
+    eventPaymentOutputs.push(fieldClone);
+  });
+};
+
 module.exports = {
-    PaymentSample,
-    PaymentOutputFields
+    paymentSample,
+    singlePaymentOutputFields,
+    eventSinglePaymentOutputFields,
+    eventProcessedPaymentsOutputFields
 };

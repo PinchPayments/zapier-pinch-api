@@ -1,6 +1,6 @@
 
 const { BASE_URL } = require('../constants');
-const { PaymentSample, PaymentOutputFields } = require('../samples/payment');
+const { paymentSample, singlePaymentOutputFields } = require('../samples/sample_payment');
 
 const createPayment = (z, bundle) => {
   const options = {
@@ -125,8 +125,8 @@ module.exports = {
         altersDynamicFields: false,
       },
     ],
-    sample: PaymentSample,
-    outputFields: PaymentOutputFields,
+    sample: paymentSample,
+    outputFields: singlePaymentOutputFields,
   },
   key: 'payment_create_realtime',
   noun: 'Payment',
