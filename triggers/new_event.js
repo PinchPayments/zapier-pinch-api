@@ -62,7 +62,6 @@ module.exports = {
   display: {
     label: 'New Event',
     description: 'Triggers when a new Event is added.',
-    hidden: false,
-    important: true,
+    hidden: false
   },
 };

@@ -138,8 +138,6 @@ module.exports = {
     noun: 'Subscription',
     display: {
         label: 'Find a Subscription',
-        description: 'Finds a Subscription using the SubscriptionId',
-        hidden: false,
-        important: false
+        description: 'Finds a Subscription using the SubscriptionId'
     },
 };

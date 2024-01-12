@@ -133,8 +133,6 @@ module.exports = {
   display: {
     label: 'Create Realtime Payment',
     description:
-      'Create a real-time payment against a credit card or bank account',
-    hidden: false,
-    important: true,
+      'Create a real-time payment against a credit card or bank account'
   },
 };

@@ -88,8 +88,6 @@ module.exports = {
   noun: 'Event',
   display: {
     label: 'Find an Event',
-    description: 'Finds an Event using the EventId',
-    hidden: false,
-    important: true,
+    description: 'Finds an Event using the EventId'
   },
 };

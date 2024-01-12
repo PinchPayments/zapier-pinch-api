@@ -185,8 +185,6 @@ module.exports = {
   noun: 'Payer',
   display: {
     label: 'Create or Update Payer',
-    description: 'Create or Update a Payer',
-    hidden: false,
-    important: true,
+    description: 'Create or Update a Payer'
   },
 };
