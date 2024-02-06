@@ -3,12 +3,11 @@ const { paymentSample, eventProcessedPaymentsOutputFields } = require('../sample
 
 const perform = (z, bundle) => {
   const options = {
-    url: `${BASE_URL}/${bundle.authData.environment}/events`,
+    url: `${BASE_URL}/${bundle.authData.environment}/events/list/scheduled-process`,
     method: 'GET',
     headers: { },
     params: {
-      page: bundle.meta.page + 1,
-      eventType: 'scheduled-process',
+      page: bundle.meta.page + 1
     },
   };
 

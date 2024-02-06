@@ -1,14 +1,13 @@
 const { BASE_URL } = require('../constants');
-const { PaymentSample, eventSinglePaymentOutputFields } = require('../samples/sample_payment');
+const { paymentSample, eventSinglePaymentOutputFields } = require('../samples/sample_payment');
 
 const perform = (z, bundle) => {
   const options = {
-    url: `${BASE_URL}/${bundle.authData.environment}/events`,
+    url: `${BASE_URL}/${bundle.authData.environment}/events/list/realtime-payment`,
     method: 'GET',
     headers: { },
     params: {
-      page: bundle.meta.page + 1,
-      eventType: 'realtime-payment',
+      page: bundle.meta.page + 1
     },
   };
 
@@ -33,7 +32,7 @@ module.exports = {
         amount: 1000
       },
       data: {
-        payment: PaymentSample
+        payment: paymentSample
       }
     },
     outputFields: eventSinglePaymentOutputFields(),

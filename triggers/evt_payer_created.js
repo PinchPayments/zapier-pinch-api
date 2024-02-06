@@ -3,12 +3,11 @@ const samplePayer = require('../samples/sample_payer');
 
 const perform = (z, bundle) => {
   const options = {
-    url: `${BASE_URL}/${bundle.authData.environment}/events`,
+    url: `${BASE_URL}/${bundle.authData.environment}/events/list/payer-created`,
     method: 'GET',
     headers: { },
     params: {
-      page: bundle.meta.page + 1,
-      eventType: 'payer-created',
+      page: bundle.meta.page + 1
     },
   };
 
