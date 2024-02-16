@@ -4,11 +4,11 @@ module.exports = {
     lastName: "Smith",
     emailAddress: "pinch+zapier@mailinator.com",
     mobileNumber: null,
-    streetAddress: null,
-    suburb: null,
-    postcode: null,
-    state: null,
-    country: null,
+    streetAddress: "123 Fake St",
+    suburb: "Test City",
+    postcode: "0000",
+    state: "NSW",
+    country: "Australia",
     companyName: null,
     metadata: ""
 }

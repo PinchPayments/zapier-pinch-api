@@ -7,7 +7,8 @@ const perform = (z, bundle) => {
     method: 'GET',
     headers: { },
     params: {
-      page: bundle.meta.page + 1
+      page: bundle.meta.page + 1,
+      pageSize: 10
     },
   };
 

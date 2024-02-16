@@ -163,7 +163,7 @@ const eventSinglePaymentOutputFields = () => {
   });
 };
 
-const eventProcessedPaymentsOutputFields = () => {
+const eventPaymentsOutputFields = () => {
   var eventPaymentOutputs = [];
   corePaymentOutputFields.forEach(field => {
     var fieldClone = structuredClone(field);
@@ -176,5 +176,5 @@ module.exports = {
     paymentSample,
     singlePaymentOutputFields,
     eventSinglePaymentOutputFields,
-    eventProcessedPaymentsOutputFields
+    eventPaymentsOutputFields
 };

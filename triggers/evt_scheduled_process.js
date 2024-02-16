@@ -1,5 +1,5 @@
 const { BASE_URL } = require('../constants');
-const { paymentSample, eventProcessedPaymentsOutputFields } = require('../samples/sample_payment');
+const { paymentSample, eventPaymentsOutputFields } = require('../samples/sample_payment');
 
 const perform = (z, bundle) => {
   const options = {
@@ -7,7 +7,8 @@ const perform = (z, bundle) => {
     method: 'GET',
     headers: { },
     params: {
-      page: bundle.meta.page + 1
+      page: bundle.meta.page + 1,
+      pageSize: 10
     },
   };
 
@@ -37,7 +38,7 @@ module.exports = {
         ]
       }
     },
-    outputFields: eventProcessedPaymentsOutputFields(),
+    outputFields: eventPaymentsOutputFields(),
   },
   key: 'evt_scheduled_process',
   noun: 'Event',

@@ -1,9 +1,9 @@
 const { BASE_URL } = require('../constants');
-const { paymentSample, eventSinglePaymentOutputFields } = require('../samples/sample_payment');
+const { paymentSample, eventPaymentsOutputFields } = require('../samples/sample_payment');
 
 const perform = (z, bundle) => {
   const options = {
-    url: `${BASE_URL}/${bundle.authData.environment}/events/list/realtime-payment`,
+    url: `${BASE_URL}/${bundle.authData.environment}/events/list/bank-results`,
     method: 'GET',
     headers: { },
     params: {
@@ -26,22 +26,26 @@ module.exports = {
     inputFields: [],
     sample: {
       id: 'evt_XXXXXXXXXXXXXX',
-      type: 'realtime-payment',
+      type: 'bank-results',
       eventDate: '2024-01-01T01:01:00Z',
-      metadata: { 
-        status: "approved",
-        amount: 1000
+      metadata: {
+        dishonourCount: 1,
+        dishonourAmount: 1000,
+        successCount: 0,
+        successAmount: 0
       },
       data: {
-        payment: paymentSample
+        payments: [
+          paymentSample
+        ]
       }
     },
-    outputFields: eventSinglePaymentOutputFields(),
+    outputFields: eventPaymentsOutputFields(),
   },
-  key: 'evt_realtime_payment',
+  key: 'evt_bank_results',
   noun: 'Event',
   display: {
-    label: 'Realtime Payment Event',
-    description: 'Triggers when a realtime Payment occurs.'
+    label: 'Bank Results Event',
+    description: 'Triggers when a Payer is created.'
   },
 };
