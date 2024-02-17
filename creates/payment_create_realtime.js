@@ -126,7 +126,7 @@ module.exports = {
       },
     ],
     sample: paymentSample,
-    outputFields: singlePaymentOutputFields,
+    outputFields: singlePaymentOutputFields(),
   },
   key: 'payment_create_realtime',
   noun: 'Payment',

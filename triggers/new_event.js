@@ -30,14 +30,19 @@ module.exports = {
         helpText:
           '(Optional) Filter by Event Type. See docs for all available event types. If left empty all events will be returned.',
         choices: [
+          // Payments
           'bank-results',
           'scheduled-process',
-          'transfer',
           'realtime-payment',
           'payment-created',
-          'subscription-complete',
+          'transfer',
+          // Payers
           'payer-created',
           'payer-updated',
+          // Subscriptions
+          'subscription-created',
+          'subscription-complete',
+          'subscription-cancelled'
         ],
         required: false,
         list: false,

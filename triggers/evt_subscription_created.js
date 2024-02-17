@@ -1,9 +1,9 @@
 const { BASE_URL } = require('../constants');
-const { paymentSample, singlePaymentOutputFields } = require('../samples/sample_payment');
+const { sampleSubscription, subscriptionOutputFields } = require('../samples/sample_subscription');
 
 const perform = (z, bundle) => {
   const options = {
-    url: `${BASE_URL}/${bundle.authData.environment}/events/list/realtime-payment`,
+    url: `${BASE_URL}/${bundle.authData.environment}/events/list/subscription-created`,
     method: 'GET',
     headers: { },
     params: {
@@ -26,22 +26,22 @@ module.exports = {
     inputFields: [],
     sample: {
       id: 'evt_XXXXXXXXXXXXXX',
-      type: 'realtime-payment',
+      type: 'subscription-created',
       eventDate: '2024-01-01T01:01:00Z',
-      metadata: { 
-        status: "approved",
-        amount: 1000
+      metadata: {
+        planName: "Monthly $10 Subscription",
+        payerName: "John Smith"
       },
       data: {
-        payment: paymentSample
+        subscription: sampleSubscription
       }
     },
-    outputFields: singlePaymentOutputFields(),
+    outputFields: subscriptionOutputFields,
   },
-  key: 'evt_realtime_payment',
+  key: 'evt_subscription_created',
   noun: 'Event',
   display: {
-    label: 'Realtime Payment Event',
-    description: 'Triggers when a realtime Payment occurs.'
+    label: 'Subscription Created Event',
+    description: 'Triggers when a Subscription is created.'
   },
 };

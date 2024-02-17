@@ -1,4 +1,4 @@
-'use strict';
+const { defaultEventOutputFields } = require('../samples/sample_event');
 
 const paymentSample = {
     id: 'pmt_XXXXXXXXXXXXXX',
@@ -81,7 +81,7 @@ const paymentSample = {
     metadata: null,
 };
 
-const corePaymentOutputFields = [
+const corePaymentOutputs = [
   { key: 'id', type: 'string' },
   { key: 'attemptId', type: 'string' },
   { key: 'amount', type: 'integer' },
@@ -114,8 +114,8 @@ const corePaymentOutputFields = [
   { key: 'metadata', dict: true },
 ];
 
-const singlePaymentOutputFields = [
-  ...corePaymentOutputFields,
+const singlePaymentOutputs = [
+  ...corePaymentOutputs,
   { key: 'attempts[]id', type: 'string' },
   { key: 'attempts[]amount', type: 'integer' },
   { key: 'attempts[]currency', type: 'string' },
@@ -154,9 +154,12 @@ const singlePaymentOutputFields = [
   { key: 'attempts[]status' }
 ];
 
-const eventSinglePaymentOutputFields = () => {
+const singlePaymentOutputFields = () => {
   var eventPaymentOutputs = [];
-  corePaymentOutputFields.forEach(field => {
+  defaultEventOutputFields.forEach(field => {
+    eventPaymentOutputs.push(structuredClone(field));
+  });
+  singlePaymentOutputs.forEach(field => {
     var fieldClone = structuredClone(field);
     fieldClone.key = 'data__payment__' + fieldClone.key;
     eventPaymentOutputs.push(fieldClone);
@@ -165,7 +168,10 @@ const eventSinglePaymentOutputFields = () => {
 
 const eventPaymentsOutputFields = () => {
   var eventPaymentOutputs = [];
-  corePaymentOutputFields.forEach(field => {
+  defaultEventOutputFields.forEach(field => {
+    eventPaymentOutputs.push(structuredClone(field));
+  });
+  corePaymentOutputs.forEach(field => {
     var fieldClone = structuredClone(field);
     fieldClone.key = 'data__payments[]' + fieldClone.key;
     eventPaymentOutputs.push(fieldClone);
@@ -175,6 +181,5 @@ const eventPaymentsOutputFields = () => {
 module.exports = {
     paymentSample,
     singlePaymentOutputFields,
-    eventSinglePaymentOutputFields,
     eventPaymentsOutputFields
 };

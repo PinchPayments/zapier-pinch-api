@@ -7,6 +7,10 @@ const evtRealtimePaymentTrigger = require('./triggers/evt_realtime_payment.js');
 const evtScheduledProcessTrigger = require('./triggers/evt_scheduled_process.js');
 const evtBankResultsTrigger = require('./triggers/evt_bank_results.js');
 
+const evtSubCreatedTrigger = require('./triggers/evt_subscription_created.js');
+const evtSubCancelledTrigger = require('./triggers/evt_subscription_cancelled.js');
+const evtSubCompletedTrigger = require('./triggers/evt_subscription_completed.js');
+
 const payerCreateCreate = require('./creates/payer_create.js');
 const paymentCreateScheduledCreate = require('./creates/payment_create_scheduled.js');
 const sourceCreateCreate = require('./creates/source_create.js');
@@ -39,11 +43,17 @@ module.exports = {
   },
   triggers: {
     [newEventTrigger.key]: newEventTrigger,
+    // Payer
     [evtPayerCreatedTrigger.key]: evtPayerCreatedTrigger,
     [evtPayerUpdatedTrigger.key]: evtPayerUpdatedTrigger,
+    // Payments
     [evtRealtimePaymentTrigger.key]: evtRealtimePaymentTrigger,
     [evtScheduledProcessTrigger.key]: evtScheduledProcessTrigger,
     [evtScheduledProcessTrigger.key]: evtScheduledProcessTrigger,
     [evtBankResultsTrigger.key]: evtBankResultsTrigger,
+    // Subscriptions
+    [evtSubCreatedTrigger.key]: evtSubCreatedTrigger,
+    [evtSubCancelledTrigger.key]: evtSubCancelledTrigger,
+    [evtSubCompletedTrigger.key]: evtSubCompletedTrigger,
   },
 };

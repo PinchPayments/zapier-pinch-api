@@ -8,7 +8,7 @@ const test = (z, bundle) => z.request({
 });
 
 const getLabel = (z, bundle) => {
-  return `${bundle.inputData.data.merchant} - ${bundle.inputData.data.email} (${bundle.authData.environment})`;
+  return `${bundle.inputData.data.merchant} (${bundle.authData.merchant_id}) - ${bundle.inputData.data.email} (${bundle.authData.environment})`;
 };
 
 const getAccessToken = async (z, bundle) => { 
