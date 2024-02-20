@@ -38,7 +38,7 @@ module.exports = {
     },
     outputFields: subscriptionOutputFields,
   },
-  key: 'evt_subscription_created',
+  key: 'evt_subscription_cancelled',
   noun: 'Event',
   display: {
     label: 'Subscription Cancelled Event',
