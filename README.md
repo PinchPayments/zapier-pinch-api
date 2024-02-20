@@ -21,11 +21,11 @@ Run `npm ci` then `npm run zapier:test` in your console to run the zapier integr
 
 ## Adding Pinch to your Zapier
 
-**Step 1**: Pinch Zapier integration is in public beta. Find the [Integration on Zapier](https://zapier.com/apps/pinch-payments/integrations) and connect to your Zapier account.
+**Step 1**: Find the [Integration on Zapier](https://zapier.com/apps/pinch-payments/integrations) and connect to your Zapier account.
 
-**Step 2**: [Signup to Pinch](https://www.getpinch.com.au/get-pinch/) so that you can access your generated API keys from the portal.
+**Step 2**: [Signup to Pinch](https://www.getpinch.com.au/) so that you can access your generated API keys from the portal.
 
-**Step 3**: In Zapier, select new Zap and search for `Pinch` and add connection. You will be presented with a screen below. fill this out with the required details by clicking the links in the help text to be taken to the API keys area. 
+**Step 3**: In Zapier, select new Zap and search for `Pinch Payments` and add connection. You will be presented with the screen below. Fill this out with the required details by clicking the links in the help text to be taken to the API keys area. 
 
 ![add-connection](https://user-images.githubusercontent.com/241857/123360850-5829e380-d5b1-11eb-8d6d-9f17e1bbf39a.PNG)
 
@@ -37,18 +37,27 @@ Run `npm ci` then `npm run zapier:test` in your console to run the zapier integr
 
 ## Integrations
 
-This integration contains 1 trigger, 4 actions, and 2 searches:
+This integration contains 8 triggers, 5 actions, and 3 searches:
 
-- [__Triggers__](#triggers)
-    - New Webhook Event
-- [__Actions__](#actions)
-    - Create Payer
-    - Create Realtime Payment
-    - Create Scheduled Payment
-    - Create Payment Source
-- [__Searches__](#searches)
-    - Find Webhook Event
-    - Find Payer
+[__Triggers__](#triggers)
+- New Event
+- Bank Results Event
+- Payer Created Event
+- Payer Updated Event
+- Realtime Payment Event
+- Subscription Created Event
+- Subscription Cancelled Event
+- Subscription Completed Event
+[__Actions__](#actions)
+- Create Payer
+- Create Realtime Payment
+- Create Scheduled Payment
+- Create Payment Source
+- Create Subscription
+[__Searches__](#searches)
+- Find Webhook Event
+- Find Payer
+- Find Subscription
 
 ## Triggers
 
@@ -98,7 +107,3 @@ Because the event notification from Pinch only contains basic information such a
 * [Find Event](https://docs.getpinch.com.au/reference#get-event)
 
 ## Examples
-
-### Hubspot Workflow with Pinch
-
-TBA

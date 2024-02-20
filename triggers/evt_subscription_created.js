@@ -1,5 +1,5 @@
 const { BASE_URL } = require('../constants');
-const { sampleSubscription, subscriptionOutputFields } = require('../samples/sample_subscription');
+const { subscriptionSample, subscriptionOutputFields } = require('../samples/sample_subscription');
 
 const perform = (z, bundle) => {
   const options = {
@@ -33,7 +33,7 @@ module.exports = {
         payerName: "John Smith"
       },
       data: {
-        subscription: sampleSubscription
+        subscription: subscriptionSample
       }
     },
     outputFields: subscriptionOutputFields,
