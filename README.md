@@ -48,62 +48,54 @@ This integration contains 8 triggers, 5 actions, and 3 searches:
 - Subscription Created Event
 - Subscription Cancelled Event
 - Subscription Completed Event
+
 [__Actions__](#actions)
 - Create Payer
 - Create Realtime Payment
 - Create Scheduled Payment
 - Create Payment Source
 - Create Subscription
+
 [__Searches__](#searches)
-- Find Webhook Event
 - Find Payer
 - Find Subscription
+- Find Event
 
 ## Triggers
 
-Using the Pinch integration, you only need to configure the Zap in Zapier. The events are queried via polling and will trigger each time a webhook event is fired off.
+The Pinch integration for Zapier has 8 different triggers, these are all related to events that happen within the Pinch platform.
+The `New Event` trigger will return all event types without the specific payloads so will need to be used inconjunction with the `Find Event` method to get the data behind it, this trigger is for more advanced integrations that are not covered by the other event triggers.
 
-The output of a trigger in Zapier is exactly what [Pinch's Event](https://docs.getpinch.com.au/reference#list-all-events) is retrieved by Zapier. It will looks something like this:
+`Bank Results Event` is triggered when a bank account transaction returns (as these take time to process) and could result in a dishonour status. If you are taking bank account transactions you will need to listen for this event otherwise you may miss failed payments.
 
-```js
-{
-    {
-        "id": "evt_XXXX78",
-        "type": "payment-created",
-        "eventDate": "2021-04-21T00:05:52.2322638",
-        "metadata": {
-            "status": "scheduled",
-            "amount": 5158
-        }
-    },
-    {
-        "id": "evt_XXXXZyCnCMGf",
-        "type": "payment-created",
-        "eventDate": "2021-04-21T00:05:52.1636637",
-        "metadata": {
-            "status": "scheduled",
-            "amount": 10287
-        }
-    },
-}
-```
+`Payer Created Event` is triggered when a new Payer is created in Pinch.
 
-In each trigger, you have the option to provide an `event-type`. If you do, the Zap will be filtered for single types only. If you leave it empty, the Zap will proceed for all events.
+`Payer Updated Event` is triggered when a Payer is updated in Pinch (This includes a Payment Source being added)
+
+`Realtime Payment Event` is triggered when a new Realtime Payment is created in Pinch.
+
+`Subscription Created Event` is triggered when a Subscription is created for a Payer.
+
+`Subscription Cancelled Event` is triggered when a Subscription is cancelled.
+
+`Subscription Completed Event` is triggered when a Subscription is run to completion.
+
 
 ## Actions
 
 The integration contains actions to upsert payers, create a scheduled payment, create a realtime payment and also adding a payment source to a payer. For many of these steps, you are required to enter data in a particular format that Pinch will understand. See the Pinch documentation on what objects are expected and returned for each action.
 
-* [Create or Update Payer](https://docs.getpinch.com.au/reference#payersid-1)
-* [Create Realtime Payment](https://docs.getpinch.com.au/reference#execute-real-time-payment)
-* [Create or Update Scheduled Payment](https://docs.getpinch.com.au/reference#save-a-payment)
-* [Create a Payment Source](https://docs.getpinch.com.au/reference#save-a-payment-source)
+* [Create or Update Payer](https://docs.getpinch.com.au/reference/save-payer)
+* [Create Realtime Payment](https://docs.getpinch.com.au/reference/realtime-payment)
+* [Create or Update Scheduled Payment](https://docs.getpinch.com.au/reference/save-payment)
+* [Create a Payment Source](https://docs.getpinch.com.au/reference/create-payment-source)
 
 ## Searches
 
 Because the event notification from Pinch only contains basic information such as a EventId and EntityId (such as PaymentId or PayerId), you may need to search Pinch for more information. For example, to load all data about a Payer you can use a __Find Payer__ action. You can search for an item based on the `id` returned from the event.
 
-* [Find Payer](https://docs.getpinch.com.au/reference#get-payer)
-* [Find Event](https://docs.getpinch.com.au/reference#get-event)
+* [Find Payer](https://docs.getpinch.com.au/reference/get-payer)
+* [Find Subscription](https://docs.getpinch.com.au/reference/get-subscription)
+* [Find Event](https://docs.getpinch.com.au/reference/get-event)
 
 ## Examples

@@ -1,4 +1,5 @@
 const { BASE_URL } = require('../constants');
+const { subscriptionSample } = require('../samples/sample_subscription');
 
 const perform = (z, bundle) => {
     const options = {
@@ -27,63 +28,7 @@ module.exports = {
                 altersDynamicFields: false,
             },
         ],
-        sample: {
-            id: 'sub_XXXXXXXXXXXXXX',
-            payer: {
-                id: "pyr_XXXXXXXXXXXXXX",
-                firstName: "Ben",
-                lastName: "Hotdog",
-                emailAddress: "ben.hotdog@mailinator.com",
-                mobileNumber: null,
-                streetAddress: null,
-                suburb: null,
-                postcode: null,
-                state: null,
-                country: null,
-                companyName: null,
-                companyRegistrationNumber: null,
-                metadata: null
-            },
-            planId: "pln_XXXXXXXXXXXXXX",
-            planName: "25% Deposit with 10% Monthly",
-            status: "active",
-            startDate: "2021-05-21T14:00:00.0000000Z",
-            freePeriods: [
-                {
-                    startDate: "2021-05-21T14:00:00.0000000Z",
-                    durationOffset: 1,
-                    durationInterval: "months",
-                    metadata: ""
-                }
-            ],
-            fixedPayments: [
-                {
-                    amount: 25000,
-                    description: "Upfront deposit",
-                    cancelPlanOnFailure: true,
-                    metadata: null,
-                    transactionDate: "2021-05-21T14:00:00.0000000Z"
-                }
-            ],
-            recurringPayment: {
-                amount: 10000,
-                endAfterNumberOfPayments: null,
-                endAfterTotalAmount: null,
-                frequencyInterval: "months",
-                frequencyOffset: 1,
-                description: "Monthly Repayment",
-                cancelPlanOnFailure: false,
-                metadata: null,
-                endAfterDate: null,
-                startDate: "2021-06-21T14:00:00.0000000Z"
-            },
-            totalAmount: 100000,
-            metadata: null,
-            surcharge: [
-                "bank-account",
-                "credit-card"
-            ]
-        },
+        sample: subscriptionSample,
         outputFields: [
             { key: 'id' },
             { key: 'payer', dict: true },
