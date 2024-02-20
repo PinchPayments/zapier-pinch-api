@@ -37,11 +37,12 @@ Run `npm ci` then `npm run zapier:test` in your console to run the zapier integr
 
 ## Integrations
 
-This integration contains 8 triggers, 5 actions, and 3 searches:
+This integration contains 9 triggers, 5 actions, and 3 searches:
 
 [__Triggers__](#triggers)
 - New Event
 - Bank Results Event
+- Scheduled Payments Processed Event
 - Payer Created Event
 - Payer Updated Event
 - Realtime Payment Event
