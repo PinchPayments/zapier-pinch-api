@@ -1,5 +1,5 @@
 const { BASE_URL } = require('../constants');
-const { subscriptionSample, subscriptionOutputFields } = require('../samples/sample_subscription');
+const { subscriptionSample } = require('../samples/sample_subscription');
 
 const createSubscription = (z, bundle) => {
   const options = {
