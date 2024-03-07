@@ -65,7 +65,7 @@ This integration contains 9 triggers, 5 actions, and 3 searches:
 ## Triggers
 
 The Pinch integration for Zapier has 8 different triggers, these are all related to events that happen within the Pinch platform.
-The `New Event` trigger will return all event types without the specific payloads so will need to be used inconjunction with the `Find Event` method to get the data behind it, this trigger is for more advanced integrations that are not covered by the other event triggers.
+The `New Event` trigger will return all event types without the specific payloads so will need to be used in conjunction with the `Find Event` action to get the data behind it, this trigger is for more advanced integrations that are not covered by the other event triggers.
 
 `Bank Results Event` is triggered when a bank account transaction returns (as these take time to process) and could result in a dishonour status. If you are taking bank account transactions you will need to listen for this event otherwise you may miss failed payments.
 
