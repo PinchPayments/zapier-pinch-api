@@ -15,18 +15,16 @@ const perform = (z, bundle) => {
   return z.request(options).then((response) => {
     response.throwForStatus();
     const results = response.data;
-
     const eventPayers = results.data;
 
     if (eventPayers && eventPayers.length > 0) {
       eventPayers.forEach(eventPayer => {
         if (eventPayer.data && eventPayer.data.payer) {
           // Setup the Pre-Approval link here so integrators don't have to build it themselves
-          eventPayer.data.payer.preapprovalUrl = `https://app.getpinch.com/preapproval/${bundle.authData.merchant_id}/${eventPayer.data.payer.id}`;
+          eventPayer.data.payer.preapprovalUrl = `https://app.getpinch.com.au/preapproval/${bundle.authData.merchant_id}/${eventPayer.data.payer.id}`;
         }
       });
     }
-
     return eventPayers;
   });
 };

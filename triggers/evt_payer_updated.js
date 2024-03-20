@@ -21,7 +21,7 @@ const perform = (z, bundle) => {
       eventPayers.forEach(eventPayer => {
         if (eventPayer.data && eventPayer.data.payer) {
           // Setup the Pre-Approval link here so integrators don't have to build it themselves
-          eventPayer.data.payer.preapprovalUrl = `https://app.getpinch.com/preapproval/${bundle.authData.merchant_id}/${eventPayer.data.payer.id}`;
+          eventPayer.data.payer.preapprovalUrl = `https://app.getpinch.com.au/preapproval/${bundle.authData.merchant_id}/${eventPayer.data.payer.id}`;
         }
       });
     }

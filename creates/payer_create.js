@@ -32,7 +32,7 @@ const createPayer = (z, bundle) => {
     const results = response.data;
     if (results) {
       // Setup the Pre-Approval link here so integrators don't have to build it themselves
-      results.preapprovalUrl = `https://app.getpinch.com/preapproval/${bundle.authData.merchant_id}/${results.id}`;
+      results.preapprovalUrl = `https://app.getpinch.com.au/preapproval/${bundle.authData.merchant_id}/${results.id}`;
     }
     return results;
   });
