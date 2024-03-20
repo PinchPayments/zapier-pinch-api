@@ -15,7 +15,19 @@ const perform = (z, bundle) => {
   return z.request(options).then((response) => {
     response.throwForStatus();
     const results = response.data;
-    return results.data;
+
+    const eventPayers = results.data;
+
+    if (eventPayers && eventPayers.length > 0) {
+      eventPayers.forEach(eventPayer => {
+        if (eventPayer.data && eventPayer.data.payer) {
+          // Setup the Pre-Approval link here so integrators don't have to build it themselves
+          eventPayer.data.payer.preapprovalUrl = `https://app.getpinch.com/preapproval/${bundle.authData.merchant_id}/${eventPayer.data.payer.id}`;
+        }
+      });
+    }
+
+    return eventPayers;
   });
 };
 
@@ -42,7 +54,8 @@ module.exports = {
       { key: 'data__payer__firstName', type: 'string' },
       { key: 'data__payer__lastName', type: 'string' },
       { key: 'data__payer__emailAddress', type: 'string' },
-      { key: 'data__payer__companyName', type: 'string' }
+      { key: 'data__payer__companyName', type: 'string' },
+      { key: 'data__payer__preapprovalUrl', type: 'string' }
     ],
   },
   key: 'evt_payer_created',

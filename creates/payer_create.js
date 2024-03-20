@@ -30,6 +30,10 @@ const createPayer = (z, bundle) => {
   return z.request(options).then((response) => {
     response.throwForStatus();
     const results = response.data;
+    if (results) {
+      // Setup the Pre-Approval link here so integrators don't have to build it themselves
+      results.preapprovalUrl = `https://app.getpinch.com/preapproval/${bundle.authData.merchant_id}/${results.id}`;
+    }
     return results;
   });
 };
@@ -179,6 +183,7 @@ module.exports = {
       { key: 'companyName', label: 'Company Name' },
       { key: 'companyRegistrationNumber', label: 'Company Registration Number' },
       { key: 'metadata', label: 'Metadata' },
+      { key: 'preapprovalUrl', label: 'Pre-Approval link'}
     ],
   },
   key: 'payer_create',
