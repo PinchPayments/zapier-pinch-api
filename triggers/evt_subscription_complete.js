@@ -3,7 +3,7 @@ const { subscriptionSample, subscriptionOutputFields } = require('../samples/sam
 
 const perform = (z, bundle) => {
   const options = {
-    url: `${BASE_URL}/${bundle.authData.environment}/events/list/subscription-completed`,
+    url: `${BASE_URL}/${bundle.authData.environment}/events/list/subscription-complete`,
     method: 'GET',
     headers: { },
     params: {
@@ -38,10 +38,10 @@ module.exports = {
     },
     outputFields: subscriptionOutputFields,
   },
-  key: 'evt_subscription_completed',
+  key: 'evt_subscription_complete',
   noun: 'Event',
   display: {
-    label: 'Subscription Completed Event',
+    label: 'Subscription Complete Event',
     description: 'Triggers when a Subscription is completed.'
   },
 };
