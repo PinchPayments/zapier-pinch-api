@@ -9,7 +9,7 @@ const evtBankResultsTrigger = require('./triggers/evt_bank_results.js');
 
 const evtSubCreatedTrigger = require('./triggers/evt_subscription_created.js');
 const evtSubCancelledTrigger = require('./triggers/evt_subscription_cancelled.js');
-const evtSubCompletedTrigger = require('./triggers/evt_subscription_completed.js');
+const evtSubCompletedTrigger = require('./triggers/evt_subscription_complete.js');
 
 const payerCreateCreate = require('./creates/payer_create.js');
 const paymentCreateScheduledCreate = require('./creates/payment_create_scheduled.js');
