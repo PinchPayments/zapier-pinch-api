@@ -16,10 +16,10 @@
   },
   "devDependencies": {
     "jwt-decode": "^3.1.2",
-    "mocha": "^10.2.0",
+    "mocha": "^10.8.2",
     "nock": "^13.4.0",
     "should": "^13.2.0",
-    "zapier-platform-cli": "15.5.1"
+    "zapier-platform-cli": "18.0.6"
   },
   "private": true,
   "zapier": {
