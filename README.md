@@ -13,7 +13,7 @@ Create a `.env` file in your root directory and fill it out with your pinch test
 
 ```
 ENVIRONMENT=test
-MERCHANT_ID=mch_test_XXXXXXXXXXX
+MERCHANT_ID=app_test_XXXXXXXXXXX
 SECRET_KEY=sk_test_XXXXXXXXXXXXXXXXXX
 ```
 
@@ -35,9 +35,54 @@ Run `npm ci` then `npm run zapier:test` in your console to run the zapier integr
 
 **Note**: You can add as many connections as you would like. On the example above we have a test connection as well as a live connection. Useful if you would like to test out a Zap functionality without affecting your production merchant.
 
+## Testing with Zapier CLI
+
+You can test actions and searches locally against the real Pinch API using the Zapier CLI.
+
+### Install the Zapier CLI globally
+
+```sh
+npm install -g zapier-platform-cli
+```
+
+### Authenticate with your Pinch credentials
+
+```sh
+zapier invoke auth start
+```
+
+Enter your Pinch API credentials when prompted:
+- **Application ID**: Your Pinch Application ID (e.g., `app_test_XXXXXXXXXXX`)
+- **Secret Key**: Your Pinch Secret Key (e.g., `sk_test_XXXXXXXXXXX`)
+- **Environment**: `test` or `live`
+
+### Test actions and searches
+
+```sh
+# Find a payer
+zapier invoke search payer_find
+
+# Create a payment link
+zapier invoke create payment_link_create
+
+# Find a payment link
+zapier invoke search payment_link_find
+
+# Find all payment links
+zapier invoke search payment_links_find
+```
+
+You will be prompted to enter the required input fields interactively.
+
+### Validate the integration
+
+```sh
+zapier validate
+```
+
 ## Integrations
 
-This integration contains 9 triggers, 5 actions, and 3 searches:
+This integration contains 9 triggers, 7 actions, and 6 searches:
 
 [__Triggers__](#triggers)
 - New Event
@@ -56,11 +101,16 @@ This integration contains 9 triggers, 5 actions, and 3 searches:
 - Create Scheduled Payment
 - Create Payment Source
 - Create Subscription
+- Create Payment Link
+- Delete Payment Link
 
 [__Searches__](#searches)
 - Find Payer
 - Find Subscription
 - Find Event
+- Find Payment Link
+- Find Payment Links
+- Find Payment Links by Payer
 
 ## Triggers
 
@@ -90,6 +140,8 @@ The integration contains actions to upsert payers, create a scheduled payment, c
 * [Create Realtime Payment](https://docs.getpinch.com.au/reference/realtime-payment)
 * [Create or Update Scheduled Payment](https://docs.getpinch.com.au/reference/save-payment)
 * [Create a Payment Source](https://docs.getpinch.com.au/reference/create-payment-source)
+* [Create Payment Link](https://docs.getpinch.com.au/reference/create-payment-link)
+* [Delete Payment Link](https://docs.getpinch.com.au/reference/delete-payment-link)
 
 ## Searches
 
@@ -98,5 +150,8 @@ Because the event notification from Pinch only contains basic information such a
 * [Find Payer](https://docs.getpinch.com.au/reference/get-payer)
 * [Find Subscription](https://docs.getpinch.com.au/reference/get-subscription)
 * [Find Event](https://docs.getpinch.com.au/reference/get-event)
+* [Find Payment Link](https://docs.getpinch.com.au/reference/get-payment-link)
+* [Find Payment Links](https://docs.getpinch.com.au/reference/get-payment-links)
+* [Find Payment Links by Payer](https://docs.getpinch.com.au/reference/get-payment-links-by-payer)
 
 ## Examples

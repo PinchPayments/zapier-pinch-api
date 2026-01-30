@@ -39,9 +39,9 @@ module.exports = {
       computed: false,
       key: 'merchant_id',
       required: true,
-      label: 'Merchant Id',
+      label: 'Application Id',
       type: 'string',
-      helpText: 'This can be found in the [Pinch Portal - Integrations](https://app.getpinch.com.au/Integrations) screen (under API Keys).'
+      helpText: 'This can be found in the [Pinch Portal - Integrations](https://app.getpinch.com.au/Integrations) screen (under API Keys). It starts with `app_` or `app_test_`.'
     },
     {
       computed: false,
