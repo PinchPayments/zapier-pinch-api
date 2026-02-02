@@ -32,7 +32,7 @@ module.exports = {
     },
     outputFields: [
       { key: 'id' },
-      { key: 'deleted' },
+      { key: 'deleted',type: 'boolean' },
     ],
   },
   key: 'payment_link_delete',

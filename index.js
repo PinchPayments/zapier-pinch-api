@@ -31,7 +31,9 @@ module.exports = {
   version: require('./package.json').version,
   platformVersion: require('zapier-platform-core').version,
   authentication: authentication,
-  
+  flags: {
+    cleanInputData: false,
+  },
   beforeRequest: [
     includeBearerToken,
     includePinchApiVersion

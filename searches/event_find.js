@@ -46,7 +46,7 @@ module.exports = {
           country: null,
           companyName: null,
           companyRegistrationNumber: null,
-          metadata: null,
+          metadata: "",
           sources: [
             {
               id: 'src_XXXXXXXXXXXXXX',
@@ -80,7 +80,7 @@ module.exports = {
       { key: 'id' },
       { key: 'type' },
       { key: 'eventDate' },
-      { key: 'metadata', dict: true },
+      { key: 'metadata', type: 'string' },
       { key: 'data', dict: true },
     ],
   },

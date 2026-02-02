@@ -42,7 +42,7 @@ module.exports = {
                 children: [
                     { key: 'durationInterval', type: 'string' },
                     { key: 'durationOffset', type: 'number' },
-                    { key: 'metadata', dict: true },
+                    { key: 'metadata', type: 'string' },
                     { key: 'startDate', type: 'datetime' }
                 ]
             },
@@ -51,9 +51,9 @@ module.exports = {
                 list: true,
                 children: [
                     { key: 'amount',type: 'number' },
-                    { key: 'description', type: 'text' },
+                    { key: 'description', type: 'string' },
                     { key: 'cancelPlanOnFailure', type: 'string' },
-                    { key: 'metadata', dict: true },
+                    { key: 'metadata', type: 'string' },
                     { key: 'transactionDate', type: 'datetime' }
                 ]
             },            
@@ -68,14 +68,14 @@ module.exports = {
                     { key: 'frequencyOffset', type: 'number' },
                     { key: 'description', type: 'string' },
                     { key: 'cancelPlanOnFailure', type: 'boolean' },
-                    { key: 'metadata', dict: true },
+                    { key: 'metadata', type: 'string' },
                     { key: 'endAfterDate', type: 'datetime' },
                     { key: 'startDate', type: 'datetime' }
                 ]
             },
 
             { key: 'totalAmount', type: 'number' },
-            { key: 'metadata', dict: true },
+            { key: 'metadata', type: 'string' },
             { key: 'surcharge', list: true },
         ],
     },
