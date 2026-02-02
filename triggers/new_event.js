@@ -1,5 +1,7 @@
 const { BASE_URL } = require('../constants');
 
+
+// Webhook trigger sample: https://github.com/zapier/zapier-platform/blob/main/example-apps/rest-hooks/triggers/recipe.js
 const perform = (z, bundle) => {
   const options = {
     url: `${BASE_URL}/${bundle.authData.environment}/events`,

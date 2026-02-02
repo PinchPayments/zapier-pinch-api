@@ -53,7 +53,7 @@ module.exports = {
       { key: 'data__payer__lastName', type: 'string' },
       { key: 'data__payer__emailAddress', type: 'string' },
       { key: 'data__payer__companyName', type: 'string' },
-      { key: 'data__payer__preapprovalUrl', type: 'string' }
+      { key: 'data__payer__preapprovalUrl', type: 'string', label: 'Pre-Approval link' }
     ],
   },
   key: 'evt_payer_updated',

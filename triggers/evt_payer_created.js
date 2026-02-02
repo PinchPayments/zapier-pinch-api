@@ -1,7 +1,7 @@
 const { BASE_URL } = require('../constants');
 const samplePayer = require('../samples/sample_payer');
 
-const perform = (z, bundle) => {
+const getFallbackRealEvent = (z, bundle) => {
   const options = {
     url: `${BASE_URL}/${bundle.authData.environment}/events/list/payer-created`,
     method: 'GET',
@@ -29,9 +29,37 @@ const perform = (z, bundle) => {
   });
 };
 
+const subscribeHook = (z, bundle) => {
+  // bundle.targetUrl has the Hook URL this app should call for this trigger.
+  // https://platform.zapier.com/build/bundle#targeturl
+  const data = {
+    uri: bundle.targetUrl,
+    eventTypes: ['payer-created'],
+  };
+
+  // You can build requests and our client will helpfully inject all the variables
+  // you need to complete. You can also register middleware to control this.
+  const options = {
+    url: 'https://57b20fb546b57d1100a3c405.mockapi.io/api/hooks',
+    method: 'POST',
+    body: data,
+  };
+
+  // You may return a promise or a normal data structure from any perform method.
+
+  // If your webhook subscriptions expire, make sure the subscribe endpoint returns an `expiration_date` property containing an ISO8601 date.
+  // The platform will automatically attempt to resubscribe after the expiration date. More details here: https://platform.zapier.com/build/cli-hook-trigger#prerequisites
+
+  return z.request(options).then((response) => response.data);
+};
+
 module.exports = {
   operation: {
+    type: 'hook',
     perform: perform,
+    performList: getFallbackRealEvent,
+    performSubscribe: subscribeHook,
+    performUnsubscribe: unsubscribeHook,
     canPaginate: true,
     inputFields: [],
     sample: {
@@ -53,7 +81,7 @@ module.exports = {
       { key: 'data__payer__lastName', type: 'string' },
       { key: 'data__payer__emailAddress', type: 'string' },
       { key: 'data__payer__companyName', type: 'string' },
-      { key: 'data__payer__preapprovalUrl', type: 'string' }
+      { key: 'data__payer__preapprovalUrl', type: 'string', label: 'Pre-Approval link' }
     ],
   },
   key: 'evt_payer_created',

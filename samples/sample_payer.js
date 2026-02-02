@@ -10,5 +10,6 @@ module.exports = {
     state: "NSW",
     country: "Australia",
     companyName: null,
-    metadata: ""
+    metadata: "",
+    preapprovalUrl: "https://app.getpinch.com.au/preapproval"
 }
