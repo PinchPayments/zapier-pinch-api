@@ -16,10 +16,15 @@ const paymentCreateScheduledCreate = require('./creates/payment_create_scheduled
 const sourceCreateCreate = require('./creates/source_create.js');
 const paymentCreateRealtimeCreate = require('./creates/payment_create_realtime.js');
 const subscriptionCreate = require('./creates/subscription_create.js');
+const paymentLinkCreate = require('./creates/payment_link_create.js');
+const paymentLinkDelete = require('./creates/payment_link_delete.js');
 
 const payerFindSearch = require('./searches/payer_find.js');
 const eventFindSearch = require('./searches/event_find.js');
 const subscriptionFindSearch = require('./searches/subscription_find.js');
+const paymentLinkFindSearch = require('./searches/payment_link_find.js');
+const paymentLinksFindSearch = require('./searches/payment_links_find.js');
+const paymentLinksByPayerFindSearch = require('./searches/payment_links_by_payer_find.js');
 const {includeBearerToken, includePinchApiVersion} = require('./before-handlers');
 
 module.exports = {
@@ -37,11 +42,16 @@ module.exports = {
     [sourceCreateCreate.key]: sourceCreateCreate,
     [paymentCreateRealtimeCreate.key]: paymentCreateRealtimeCreate,
     [subscriptionCreate.key]: subscriptionCreate,
+    [paymentLinkCreate.key]: paymentLinkCreate,
+    [paymentLinkDelete.key]: paymentLinkDelete,
   },
   searches: {
     [payerFindSearch.key]: payerFindSearch,
     [eventFindSearch.key]: eventFindSearch,
-    [subscriptionFindSearch.key]: subscriptionFindSearch
+    [subscriptionFindSearch.key]: subscriptionFindSearch,
+    [paymentLinkFindSearch.key]: paymentLinkFindSearch,
+    [paymentLinksFindSearch.key]: paymentLinksFindSearch,
+    [paymentLinksByPayerFindSearch.key]: paymentLinksByPayerFindSearch,
   },
   triggers: {
     [newEventTrigger.key]: newEventTrigger,
